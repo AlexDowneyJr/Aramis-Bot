@@ -12,8 +12,9 @@ import json
 import timeit
 import traceback
 
-prefix = "?"
+prefix = "."
 bot = commands.Bot(command_prefix=prefix)
+bot_token = "NDgxMDcyMjUyMjg5Mjg2MTU0.DlxBPQ.6_erXKpMtyTx73_JapCciUnou3Q"
 
 @bot.event
 async def on_ready():
@@ -114,7 +115,7 @@ async def kick(ctx, username : discord.Member, reason : str = None):
 
 @bot.command(pass_context=True)
 async def info(ctx):
-    embed = discord.Embed(title="Aramis - The Official Bot", description="The Bot that sees all, hears all and knows all. Don't piss it off.", color=0xF00000)
+    embed = discord.Embed(title="Zuki - The Currency Bot", description="The Loli accountant who you'd fuck for your money", color=0xF00000)
 
     embed.add_field(name="Author", value="Alex Downey Jr.")
     
@@ -504,7 +505,7 @@ async def on_command_error(error, ctx):
 async def on_message(message):
     author = message.author
 
-    partner_channel = bot.get_channel("375325934888157194")
+    partner_channel = bot.get_channel("433746345828810783")
     if message.channel == partner_channel:
         if message.author.id in accounts:
             accounts[message.author.id] += 50
@@ -514,8 +515,8 @@ async def on_message(message):
     
     if bot.user.id != message.author.id:
         gae_stuff = [
-            "gae", "gay", "gae bot", "You're gae Aramis", "Aramis is gae", "gay bot", 
-            "You're gay Aramis", "Aramis is gay", "you're gae {}".format(author.mention)
+            "gae", "gay", "gae bot", "You're gae Zuki", "Zuki is gae", "gay bot", 
+            "You're gay Zuki", "Zuki is gay", "you're gae {}".format(author.mention)
         ] 
         
         for x in gae_stuff:
@@ -539,7 +540,7 @@ async def on_message(message):
         if 'sleep' in message.content.lower():
             await bot.add_reaction(message, emoji='💤')
         
-        if "I'm sick" in message.content:
+        if "i'm sick" in message.content.lower():
             await bot.add_reaction(message, emoji='🤧')
             await bot.send_message(message.channel,'Get well soon :smile:')
         
@@ -549,4 +550,4 @@ async def on_message(message):
                     
     await bot.process_commands(message)
 
-bot.run("NDgxMDcyMjUyMjg5Mjg2MTU0.DlxBPQ.6_erXKpMtyTx73_JapCciUnou3Q")    
+bot.run(bot_token)
