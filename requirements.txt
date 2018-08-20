@@ -7,13 +7,3 @@ apiai
 bs4
 gspread
 oauth2client
-random
-numbers
-time
-os
-datetime
-aiohttp
-itertools
-json
-timeit
-traceback
