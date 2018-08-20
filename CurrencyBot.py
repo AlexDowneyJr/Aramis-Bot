@@ -539,7 +539,7 @@ async def on_message(message):
         if 'sleep' in message.content.lower():
             await bot.add_reaction(message, emoji='💤')
         
-        if 'i'm sick' in message.content.lower():
+        if "I'm sick" in message.content.lower():
             await bot.add_reaction(message, emoji='🤧')
             await bot.send_message(message.channel,'Get well soon :smile:')
         
