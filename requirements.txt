@@ -1,0 +1,9 @@
+discord
+asyncio
+Pymoe
+requests
+simplejson
+apiai
+bs4
+gspread
+oauth2client
