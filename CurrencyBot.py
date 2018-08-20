@@ -549,4 +549,4 @@ async def on_message(message):
                     
     await bot.process_commands(message)
 
-bot.run(bot_token)    
+bot.run("NDgxMDcyMjUyMjg5Mjg2MTU0.DlxBPQ.6_erXKpMtyTx73_JapCciUnou3Q")    
