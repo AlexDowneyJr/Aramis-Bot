@@ -522,10 +522,31 @@ async def on_message(message):
             if x in message.content:
                 if x is "gae" or x is "gay":
                     await bot.send_message(message.channel, "lul, gae boii.")
+                    await bot.add_reaction(message, emoji='👌')
+                    await bot.add_reaction(message, emoji='🏳️‍🌈')
                 else:
                     await bot.send_message(message.channel, "But, nah my young padawan, . . . you're gae")
+        
+        if "🤔" in message.content.lower():
+            await bot.add_reaction(message, emoji='🤔')
+        
+        if "👌" in message.content.lower():
+            await bot.add_reaction(message, emoji='👌')
+        
+        if 'bye' in message.content.lower():
+            await bot.add_reaction(message, emoji='👋')
+            
+        if 'sleep' in message.content.lower():
+            await bot.add_reaction(message, emoji='💤')
+        
+        if 'i'm sick' in message.content.lower():
+            await bot.add_reaction(message, emoji='🤧')
+            await bot.send_message(message.channel,'Get well soon :smile:')
+        
+        if 'got sick' in message.content.lower():
+            await bot.add_reaction(message, emoji='🤧')
+            await bot.send_message(message.channel,'Get well soon :smile:')
                     
-    
     await bot.process_commands(message)
 
 bot.run("NDgwOTk0Mjk1NTU0NTA2NzUz.Dlv40g.2JpCSDJHtsix3xCWOCgvkZ8soto")    
