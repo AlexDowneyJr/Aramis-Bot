@@ -14,6 +14,7 @@ import traceback
 
 prefix = "."
 bot = commands.Bot(command_prefix=prefix)
+bot_token = "NDgxMDcyMjUyMjg5Mjg2MTU0.DlxBPQ.6_erXKpMtyTx73_JapCciUnou3Q"
 
 @bot.event
 async def on_ready():
