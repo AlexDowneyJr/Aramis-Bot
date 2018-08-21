@@ -39,8 +39,6 @@ async def shutdown(ctx):
     if ctx.message.author.id == bot.owner:
         await bot.say("Cya later peeps!")
         await bot.close()
-        with open('accounts.json', 'w') as f:
-            json.dump(accounts, f)
     else:
         await bot.say("Owner only command.")
 
