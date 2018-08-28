@@ -11,9 +11,11 @@ from itertools import cycle
 import json
 import timeit
 import traceback
+import requests
 
 prefix = "."
 bot = commands.Bot(command_prefix=prefix)
+bot_token = "NDgxMDcyMjUyMjg5Mjg2MTU0.DlxBPQ.6_erXKpMtyTx73_JapCciUnou3Q"
 
 @bot.event
 async def on_ready():
@@ -234,7 +236,7 @@ async def porn_thing(ctx):
                 embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
                 embed.set_footer(text=f"REQUESTED BY {ctx.message.author.display_name}")
                 await bot.say(embed=embed)
-                await asyncio.sleep(15)
+                await asyncio.sleep(1800)
 
 async def hentai_thing(ctx):    
     while not bot.is_closed:
@@ -245,7 +247,7 @@ async def hentai_thing(ctx):
                 embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
                 embed.set_footer(text=f"REQUESTED BY {ctx.message.author.display_name}")
                 await bot.say(embed=embed)
-                await asyncio.sleep(15)
+                await asyncio.sleep(1800)
 
 @bot.command(pass_context=True)
 async def autoporn(ctx):
@@ -469,6 +471,26 @@ async def leaderboard(ctx):
         list_lb += "{}. `<@{}>`  :  {} :dollar:\n".format(number + 1, dude, accounts[dude])
     await bot.send_message(ctx.message.channel, list_lb)
 
+@bot.command(pass_context = True, aliases=['ud'])
+async def urban(ctx, *msg):
+    author = ctx.message.author.display_name
+    try:
+        word = ' '.join(msg)
+        api = "http://api.urbandictionary.com/v0/define"
+        response = requests.get(api, params=[("term", word)]).json()
+        embed = discord.Embed(description="No results found!", colour=0xF00000)
+        if len(response["list"]) == 0:
+            return await bot.say(embed=embed)
+        embed = discord.Embed(title="Word", description=word, colour=embed.colour)
+        embed.add_field(name="Top definition:", value=response['list'][0]['definition'])
+        embed.add_field(name="Examples:", value=response['list'][0]["example"])
+        embed.set_footer(text=f"Requested by {author}")
+
+        await bot.say(embed=embed)
+
+    except:
+        bot.say("An error has occured in the bot.")
+
 bot.remove_command("help")
 
 @bot.command()
@@ -492,6 +514,7 @@ async def help():
     embed.add_field(name="?hug", value="Hug a user, Show them the love they deserve :smiling:", inline=False)
     embed.add_field(name="?avatar", value="Displays the avatar of the person", inline=False)
     embed.add_field(name="?userinfo", value="Displays information relating to the user", inline=False)
+    embed.add_field(name="?urban", value="Searches the Urban dictionary for definitions", inline=False)
 
     await bot.say(embed=embed)
 @bot.event
@@ -546,7 +569,19 @@ async def on_message(message):
         if 'got sick' in message.content.lower():
             await bot.add_reaction(message, emoji='🤧')
             await bot.send_message(message.channel,'Get well soon :smile:')
+
+        if "weird" in message.content.lower():
+            await bot.send_message(message.channel, "Weird indeed")
+
+        if "RIP" in message.content.lower():
+            await bot.send_message(message.channel, "RIP indeed, Welp . . . What can bots do to help? :shrug:")
+
+        howdy = ["how are you zuki?", "How are you zuki", "zuki, how are you?"]
+        
+        for how in howdy:
+            if how == message.content.lower():
+                await bot.send_message(message.channel, "I'm feeling good, How about you?")
                     
     await bot.process_commands(message)
 
-bot.run(os.environ["bot_token"])
+bot.run(bot_token)
