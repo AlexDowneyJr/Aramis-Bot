@@ -583,4 +583,4 @@ async def on_message(message):
                     
     await bot.process_commands(message)
 
-bot.run(bot_token)
+bot.run(os.environ["bot_token"])
