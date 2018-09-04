@@ -235,7 +235,7 @@ async def porn_thing(ctx):
                 embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
                 embed.set_footer(text=f"REQUESTED BY {ctx.message.author.display_name}")
                 await bot.say(embed=embed)
-                await asyncio.sleep(1800)
+                await asyncio.sleep(15)
 
 async def hentai_thing(ctx):    
     while not bot.is_closed:
@@ -246,7 +246,7 @@ async def hentai_thing(ctx):
                 embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
                 embed.set_footer(text=f"REQUESTED BY {ctx.message.author.display_name}")
                 await bot.say(embed=embed)
-                await asyncio.sleep(1800)
+                await asyncio.sleep(15)
 
 @bot.command(pass_context=True)
 async def autoporn(ctx):
