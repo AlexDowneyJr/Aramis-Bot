@@ -70,7 +70,7 @@ async def ban(ctx, username : discord.Member, reason : str = None):
     if author == username:
         await bot.say("I can't let you do that, Self harm is wrong :frowning:")
         return
-    elif not is_allowed_by_hierarchy(server, author, user):
+    elif not is_allowed_by_hierarchy(server, author, username):
             await bot.say("I cannot let you do that. You are not higher than the user in the role hierarchy.")
             return
 
@@ -111,7 +111,7 @@ async def kick(ctx, username : discord.Member, reason : str = None):
     if author == username:
         await bot.say("I can't let you do that, Self Harm is wrong :frowning:")
         return
-    elif not is_allowed_by_hierarchy(server, author, user):
+    elif not is_allowed_by_hierarchy(server, author, username):
             await bot.say("I cannot let you do that. You are not higher than the user in the role hierarchy.")
             return
         
