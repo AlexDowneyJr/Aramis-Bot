@@ -56,16 +56,23 @@ async def punch(username : discord.Member):
             await bot.say(f"ONE PUNCH!! and {username.mention} is out! ლ(ಠ益ಠლ)")
             await bot.say(embed=e)
 
+def is_allowed_by_hierarchy(server, mod, user):
+    return mod.top_role.position > user.top_role.position
+
 @bot.command(pass_context=True)
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, username : discord.Member, reason : str = None):
     author = ctx.message.author
+    server = ctx.message.server
     e=discord.Embed(color=0xF00000)
     e.set_image(url="https://cdn.discordapp.com/attachments/460839454358372353/469886770754879488/ezgif-5-bda5e8d79b.gif")
 
     if author == username:
         await bot.say("I can't let you do that, Self harm is wrong :frowning:")
         return
+    elif not is_allowed_by_hierarchy(server, author, user):
+            await bot.say("I cannot let you do that. You are not higher than the user in the role hierarchy.")
+            return
 
     if reason is None:
         reason = "The Ban Hammer has spoken."
@@ -97,12 +104,16 @@ async def unban(ctx, user : str):
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, username : discord.Member, reason : str = None):
     author = ctx.message.author
+    server = ctx.message.server
     e=discord.Embed(color=0xF00000)
     e.set_image(url="https://cdn.discordapp.com/attachments/358587036678225920/469917097498116106/tumblr_mulauefSzX1sl0k4to1_500.gif")
 
     if author == username:
         await bot.say("I can't let you do that, Self Harm is wrong :frowning:")
         return
+    elif not is_allowed_by_hierarchy(server, author, user):
+            await bot.say("I cannot let you do that. You are not higher than the user in the role hierarchy.")
+            return
         
     if reason is None:
         reason = "The Mod/Admin thought of this person to be a disgusting creature."
@@ -235,7 +246,7 @@ async def porn_thing(ctx):
                 embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
                 embed.set_footer(text=f"REQUESTED BY {ctx.message.author.display_name}")
                 await bot.say(embed=embed)
-                await asyncio.sleep(15)
+                await asyncio.sleep(1800)
 
 async def hentai_thing(ctx):    
     while not bot.is_closed:
@@ -246,7 +257,7 @@ async def hentai_thing(ctx):
                 embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
                 embed.set_footer(text=f"REQUESTED BY {ctx.message.author.display_name}")
                 await bot.say(embed=embed)
-                await asyncio.sleep(15)
+                await asyncio.sleep(1800)
 
 @bot.command(pass_context=True)
 async def autoporn(ctx):
