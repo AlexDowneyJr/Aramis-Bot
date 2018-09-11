@@ -818,8 +818,9 @@ async def on_message(message):
             await bot.add_reaction(message, emoji='🤧')
             await bot.send_message(message.channel,'Get well soon :smile:')
 
-        if "weird" in message.content.lower():
-            await bot.send_message(message.channel, "Weird indeed")
+        if message not in "265828729970753537": 
+            if "weird" in message.content.lower():
+                await bot.send_message(message.channel, "Weird indeed")
 
         if "RIP" in message.content:
             await bot.send_message(message.channel, "RIP indeed, Welp . . . What can bots do to help? :shrug:")
