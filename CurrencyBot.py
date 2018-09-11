@@ -783,7 +783,7 @@ async def on_message(message):
             with open('accounts.json', 'w') as f:
                 json.dump(accounts, f)
     
-    if message not in "265828729970753537":
+    if message not in bot.get_server("265828729970753537"):
         if bot.user.id != message.author.id:
             gae_stuff = [
                 "gae", "gay", "gae bot", "You're gae Zuki", "Zuki is gae", "gay bot", 
@@ -819,7 +819,7 @@ async def on_message(message):
             await bot.add_reaction(message, emoji='🤧')
             await bot.send_message(message.channel,'Get well soon :smile:')
 
-        if message not in "265828729970753537": 
+        if message not in bot.get_server("265828729970753537"): 
             if "weird" in message.content.lower():
                 await bot.send_message(message.channel, "Weird indeed")
 
