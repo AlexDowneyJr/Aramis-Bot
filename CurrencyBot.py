@@ -783,7 +783,7 @@ async def on_message(message):
             with open('accounts.json', 'w') as f:
                 json.dump(accounts, f)
     
-    if message not in bot.get_server("265828729970753537"):
+    if message.server != bot.get_server("265828729970753537"):
         if bot.user.id != message.author.id:
             gae_stuff = [
                 "gae", "gay", "gae bot", "You're gae Zuki", "Zuki is gae", "gay bot", 
@@ -799,38 +799,38 @@ async def on_message(message):
                     else:
                         await bot.send_message(message.channel, "But, nah my young padawan, . . . you're gae")
         
-        if "🤔" in message.content.lower():
-            await bot.add_reaction(message, emoji='🤔')
+    if "🤔" in message.content.lower():
+        await bot.add_reaction(message, emoji='🤔')
         
-        if "👌" in message.content.lower():
-            await bot.add_reaction(message, emoji='👌')
+    if "👌" in message.content.lower():
+        await bot.add_reaction(message, emoji='👌')
         
-        if 'bye' in message.content.lower():
-            await bot.add_reaction(message, emoji='👋')
+    if 'bye' in message.content.lower():
+        await bot.add_reaction(message, emoji='👋')
             
-        if 'sleep' in message.content.lower():
-            await bot.add_reaction(message, emoji='💤')
+    if 'sleep' in message.content.lower():
+        await bot.add_reaction(message, emoji='💤')
         
-        if "i'm sick" in message.content.lower():
-            await bot.add_reaction(message, emoji='🤧')
-            await bot.send_message(message.channel,'Get well soon :smile:')
+    if "i'm sick" in message.content.lower():
+        await bot.add_reaction(message, emoji='🤧')
+        await bot.send_message(message.channel,'Get well soon :smile:')
         
-        if 'got sick' in message.content.lower():
-            await bot.add_reaction(message, emoji='🤧')
-            await bot.send_message(message.channel,'Get well soon :smile:')
+    if 'got sick' in message.content.lower():
+        await bot.add_reaction(message, emoji='🤧')
+        await bot.send_message(message.channel,'Get well soon :smile:')
 
-        if message not in bot.get_server("265828729970753537"): 
-            if "weird" in message.content.lower():
-                await bot.send_message(message.channel, "Weird indeed")
+    if message.server != bot.get_server("265828729970753537"): 
+        if "weird" in message.content.lower():
+            await bot.send_message(message.channel, "Weird indeed")
 
-        if "RIP" in message.content:
-            await bot.send_message(message.channel, "RIP indeed, Welp . . . What can bots do to help? :shrug:")
+    if "RIP" in message.content:
+        await bot.send_message(message.channel, "RIP indeed, Welp . . . What can bots do to help? :shrug:")
 
-        howdy = ["how are you zuki?", "How are you zuki", "zuki, how are you?"]
+    howdy = ["how are you zuki?", "How are you zuki", "zuki, how are you?"]
         
-        for how in howdy:
-            if how == message.content.lower():
-                await bot.send_message(message.channel, "I'm feeling good, How about you?")
+    for how in howdy:
+        if how == message.content.lower():
+            await bot.send_message(message.channel, "I'm feeling good, How about you?")
                     
     await bot.process_commands(message)
 
