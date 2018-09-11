@@ -783,20 +783,21 @@ async def on_message(message):
             with open('accounts.json', 'w') as f:
                 json.dump(accounts, f)
     
-    if bot.user.id != message.author.id:
-        gae_stuff = [
-            "gae", "gay", "gae bot", "You're gae Zuki", "Zuki is gae", "gay bot", 
-            "You're gay Zuki", "Zuki is gay", "you're gae {}".format(author.mention)
-        ] 
+    if message not in "265828729970753537":
+        if bot.user.id != message.author.id:
+            gae_stuff = [
+                "gae", "gay", "gae bot", "You're gae Zuki", "Zuki is gae", "gay bot", 
+                "You're gay Zuki", "Zuki is gay", "you're gae {}".format(author.mention)
+            ] 
         
-        for x in gae_stuff:
-            if x in message.content:
-                if x is "gae" or x is "gay":
-                    await bot.send_message(message.channel, "lul, gae boii.")
-                    await bot.add_reaction(message, emoji='👌')
-                    await bot.add_reaction(message, emoji='🏳️‍🌈')
-                else:
-                    await bot.send_message(message.channel, "But, nah my young padawan, . . . you're gae")
+            for x in gae_stuff:
+                if x in message.content:
+                    if x is "gae" or x is "gay":
+                        await bot.send_message(message.channel, "lul, gae boii.")
+                        await bot.add_reaction(message, emoji='👌')
+                        await bot.add_reaction(message, emoji='🏳️‍🌈')
+                    else:
+                        await bot.send_message(message.channel, "But, nah my young padawan, . . . you're gae")
         
         if "🤔" in message.content.lower():
             await bot.add_reaction(message, emoji='🤔')
