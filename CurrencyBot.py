@@ -820,8 +820,9 @@ async def on_message(message):
         await bot.send_message(message.channel,'Get well soon :smile:')
 
     if message.server != bot.get_server("265828729970753537"): 
-        if "weird" in message.content.lower():
-            await bot.send_message(message.channel, "Weird indeed")
+        if bot.user.id != message.author.id:
+            if "weird" in message.content.lower():
+                await bot.send_message(message.channel, "Weird indeed")
 
     if "RIP" in message.content:
         await bot.send_message(message.channel, "RIP indeed, Welp . . . What can bots do to help? :shrug:")
