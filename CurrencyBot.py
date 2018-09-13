@@ -604,8 +604,9 @@ async def on_message(message):
             if "weird" in message.content.lower():
                 await bot.send_message(message.channel, "Weird indeed")
 
-    if "RIP" in message.content:
-        await bot.send_message(message.channel, "RIP indeed, Welp . . . What can bots do to help? :shrug:")
+    if bot.user.id != message.author.id:
+        if "RIP" in message.content:
+            await bot.send_message(message.channel, "RIP indeed, Welp . . . What can bots do to help? :shrug:")
 
     howdy = ["how are you zuki?", "How are you zuki", "zuki, how are you?"]
         
