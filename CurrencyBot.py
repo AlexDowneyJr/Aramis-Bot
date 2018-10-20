@@ -52,7 +52,6 @@ async def punch(username : discord.Member):
         await bot.say("Think this is funny? **WAPOW** ლ(ಠ益ಠლ) NOW WHO'S BEGGING FOR MERCY?")
         await bot.say(embed=f)
     else:
-        while not bot.is_closed:
             await bot.say(f"ONE PUNCH!! and {username.mention} is out! ლ(ಠ益ಠლ)")
             await bot.say(embed=e)
 
