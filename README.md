@@ -1,2 +1,2 @@
 # Aramis-Bot
-A Discord Bot
+A Discord Moderation Bot
